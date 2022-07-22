@@ -6,12 +6,17 @@ const resultDiv = document.getElementById("resultDiv");
 // number's factorial
 // -----------------------------------------
 function getFactorial(num) {
-  let result = 0;
+  let result = 1;
 
   // TODO: Given how to calculate factorial,
   //       what Javascript is needed?
   //       Hint: we're looping "for" a given number
   //             of iterations, from 1 to "num"
+
+  if (num === 0) {return 1;}
+  for (let val = 2; val <= num; val++) {
+    result *= val;
+  } 
 
   return result;
 }

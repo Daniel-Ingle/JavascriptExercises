@@ -23,7 +23,8 @@ const resultDiv = document.getElementById("resultDiv");
 // -----------------------------------------
 function getFactorial(num) {
   // Handle the "base case"
-  if (num === 0) {
+  // This had to be converted into a number to work when trying it with 0
+  if (Number(num) === 0) {
     return 1;
   }
 
@@ -31,6 +32,8 @@ function getFactorial(num) {
   //       if we say:
   //           return num * getFactorial(???);
   //       what should the "???" parameter be??
+
+  return num * getFactorial(num - 1);
 }
 
 form.addEventListener('submit', (ev) => {

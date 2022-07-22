@@ -51,6 +51,10 @@ function getFibonacciSequence(num) {
   //
 
 
+  for (let i = 2; i < num; i++) {
+    sequence.push(sequence[sequence.length - 1] + sequence[sequence.length - 2]);
+  }
+
   return sequence;
 }
 
