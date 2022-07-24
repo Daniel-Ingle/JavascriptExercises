@@ -4,7 +4,7 @@ const citiesSelect = document.getElementById("citiesSelect");
 
 // -----------------------------------------------------------------
 // This is a useful function that you can use to swap
-// to elements with one another, given their index within an array.
+// two elements with one another, given their index within an array.
 function swapElements(indexA, indexB) {
   let tempVal = cities[indexA];
   cities[indexA] = cities[indexB];
@@ -15,6 +15,10 @@ function swapElements(indexA, indexB) {
 function bubbleSort() {
   for (let outerIndex = 0 ; outerIndex < cities.length; outerIndex++) {
     for (let i = 0; i < (cities.length - outerIndex - 1); i++) {
+
+      if (cities[i] > cities[i + 1]) {
+        swapElements(i, i + 1);
+      }
 
       // TODO: What should we do here???
 
