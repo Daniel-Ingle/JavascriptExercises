@@ -22,6 +22,9 @@ function subSearch(array, target, leftIndex, rightIndex) {
   
   // TODO: Handle the "base case."  What is the "base case?"
   //       We need to handle that here, first
+  if (leftIndex > rightIndex) {
+    return -1;
+  }
 
   // else, find the middle index
   let middleIndex = Math.floor((leftIndex + rightIndex) / 2);
@@ -33,6 +36,12 @@ function subSearch(array, target, leftIndex, rightIndex) {
 
   // TODO: Now what?  We need to recurse, calling subSearch recursively
   //       for *which* *cases*????  What are the parameters to subSearch() ??
+
+  if (target.toLowerCase() < array[middleIndex].toLowerCase()) {
+    return subSearch(array, target, leftIndex, middleIndex - 1);
+  } else {
+    return subSearch(array, target, middleIndex + 1, rightIndex);
+  }
 
   // ????
 
