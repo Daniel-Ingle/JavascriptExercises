@@ -24,6 +24,8 @@ let cards = [];
 
 let timerTick;
 
+let firstClk = null;
+
 // Check to make sure we are okay with the
 // characters/WIDTH/HEIGHT
 if (WIDTH * HEIGHT % 2 !== 0 || 
@@ -51,7 +53,34 @@ function showCard(card, toggle) {
 //         'match?'  
 //       - How do we determine when the game is over?
 function onCardClick(e) {
-  showCard(e.currentTarget, true);
+  let cardClk = e.currentTarget;
+  if (cardClk.classList.contains("open")) {return;}
+
+  showCard(cardClk, true);
+  
+  if (firstClk) {
+    if (firstClk.innerText === cardClk.innerText) {
+      let victory = true;
+      for (let card of cards) {
+        if (!card.classList.contains("open")) {
+          victory = false;
+          break;
+        }
+      }
+      if (victory) {
+        clearInterval(timerTick);
+        let seconds = timeDiv.innerText.slice(0, timeDiv.innerText.length - 12);
+        timeDiv.innerText = `You won the game in ${seconds} seconds!`;
+      }
+    } else {
+      const flip = firstClk;
+      setTimeout(() => {showCard(cardClk, false)}, 500);
+      setTimeout(() => {showCard(flip, false)}, 500);
+    }
+    firstClk = null;
+  } else {
+    firstClk = cardClk;
+  }
 }
 
 // -----------------------------------------------
